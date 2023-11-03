@@ -1,5 +1,6 @@
 name: 'Run App NateMatthews'
 
+
 on: [push, pull_request]
 
 jobs:
@@ -17,3 +18,5 @@ jobs:
         run: dotnet restore GithubActions.sln
       - name: Build
         run: msbuild /p:Configuration=Release GithubActions.sln
+      - name: Run Unit Tests
+        run: mono ./packages/NUnit.ConsoleRunner.*/tools/nunit3-console.exe ./Tests/bin/Release/Tests.dll
